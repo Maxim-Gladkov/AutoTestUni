@@ -4,8 +4,8 @@ import org.testuni.classes.AbstractEntry;
 
 public class TextEntry extends AbstractEntry {
 
-    static final int maxEntrySize = 20;
-    String messageType;
+    private final int maxEntrySize = 20;
+    private String messageType;
 
     public TextEntry(String author, int date, String message, String messageType){
         super(author, date, message, messageType);

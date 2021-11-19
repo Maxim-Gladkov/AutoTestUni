@@ -4,8 +4,8 @@ import org.testuni.classes.AbstractEntry;
 
 public class Media extends AbstractEntry {
 
-        static int maxEntrySize;
-        String mediaType;
+        private int maxEntrySize;
+        private String mediaType;
 
         public Media(String author, int date, String message, String messageType, String mediaType) {
             super(author, date, message, messageType);

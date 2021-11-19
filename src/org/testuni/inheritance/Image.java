@@ -2,8 +2,8 @@ package org.testuni.inheritance;
 
 public class Image extends Media {
 
-    String imageFormat;
-    int maxSizeOfImage;
+    private String imageFormat;
+    private int maxSizeOfImage;
 
     public Image(String author, int date, String message, String messageType, String mediaType, String imageFormat) {
         super(author, date, message, messageType, mediaType);

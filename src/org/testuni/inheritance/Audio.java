@@ -2,8 +2,8 @@ package org.testuni.inheritance;
 
 public class Audio extends Media {
 
-    double audioLength;
-    final static int maxSizeOfAudio = 500;
+    private double audioLength;
+    private final int maxSizeOfAudio = 500;
 
 
     public Audio(String author, int date, String message, String messageType, String mediaType, Double audioLength) {

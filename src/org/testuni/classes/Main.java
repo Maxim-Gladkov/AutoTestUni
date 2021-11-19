@@ -15,7 +15,6 @@ public class Main {
         System.out.println(anyImage.getMaxSizeOfEntry());
         voiceMessage.showContent();
 
-        //test
 
     }
 
