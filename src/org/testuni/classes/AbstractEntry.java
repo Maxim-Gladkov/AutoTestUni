@@ -2,10 +2,10 @@ package org.testuni.classes;
 
 public abstract class AbstractEntry {
 
-    private String author;
-    private int date;
-    private String message;
-    private String messageType;
+    protected String author;
+    protected int date;
+    protected String message;
+    protected String messageType;
 
     public AbstractEntry(String author, int date, String message, String messageType) {
         this.author = author;

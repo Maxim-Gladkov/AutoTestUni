@@ -1,21 +1,27 @@
 package org.testuni.classes;
 
+import org.testuni.inheritance.Audio;
 import org.testuni.inheritance.Image;
-import org.testuni.inheritance.Media;
 import org.testuni.inheritance.TextEntry;
+import org.testuni.inheritance.Video;
+import org.testuni.interfaces.Play;
+import org.testuni.interfaces.Print;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Image anyImage = new Image("Vanya", 2021,"","post", "image", "jpeg");
-        Media voiceMessage = new Media("Petya",2020, "", "post", "audio");
+        Print printText = new TextEntry("AnyAuthor", 20, "Hello buddy!", "post");
+        printText.doPrint();
 
+        Print printImage = new Image("newAuthor", 11, "New picture!", "repost", "", "jpeg");
+        printImage.doPrint();
 
-        System.out.println(anyImage.getMaxSizeOfEntry());
-        voiceMessage.showContent();
+        Play playAudio = new Audio("Massive Attack", 21, "New single!", "repost", "", 5.54);
+        playAudio.doPlay();
 
-
+        Play playVideo = new Video("Director", 22, "New movie!", "comment", "", 6458);
+        playVideo.doPlay();
     }
 
 }

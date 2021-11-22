@@ -1,14 +1,18 @@
 package org.testuni.inheritance;
 
-public class Image extends Media {
+import org.testuni.interfaces.Print;
+
+public class Image extends Media implements Print {
 
     private String imageFormat;
-    private int maxSizeOfImage;
+    private final String mediaType = "image";
+    private static final int maxSizeOfImage = 300;
 
-    public Image(String author, int date, String message, String messageType, String mediaType, String imageFormat) {
-        super(author, date, message, messageType, mediaType);
+    public Image (String author, int date, String message, String messageType, String mediaType, String imageFormat) {
+        super(author, date, message, messageType, mediaType, maxSizeOfImage);
         this.imageFormat = imageFormat;
     }
+
 
     public String getImageFormat () {
         return imageFormat;
@@ -16,13 +20,18 @@ public class Image extends Media {
 
     @Override
     public int getMaxSizeOfEntry() {
-        if (imageFormat == "jpeg") {
-            maxSizeOfImage = 50;
-        }else if (imageFormat=="pdf") {
-            maxSizeOfImage=100;
-        }else if(imageFormat=="png") {
-            maxSizeOfImage=150;
-        }
         return maxSizeOfImage;
     }
+
+    public void doPrint () {
+        author = getAuthor();
+        date = getDate();
+        message = getMessage();
+        messageType = getMessageType();
+        imageFormat = getImageFormat();
+
+        System.out.print("Author: " + author + ", " + "Date: " + date + ", " + "Message: " + message + ", " + "MessageType: " + messageType + ", " + "MediaType: " + mediaType + ", " + "ImageFormat: " + imageFormat + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
+        System.out.println();
+    }
+
 }
