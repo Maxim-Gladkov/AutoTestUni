@@ -1,10 +1,10 @@
 package org.testuni.inheritance;
 
 import org.testuni.classes.AbstractEntry;
-import org.testuni.interfaces.Print;
+import org.testuni.interfaces.Printable;
 
 
-public class TextEntry extends AbstractEntry implements Print {
+public class TextEntry extends AbstractEntry implements Printable {
 
     private final int maxEntrySize = 20;
 
@@ -13,18 +13,6 @@ public class TextEntry extends AbstractEntry implements Print {
         super(author, date, message, messageType);
     }
 
-    public String getAuthor() {
-        return author;
-    }
-    public int getDate() {
-        return date;
-    }
-    public String getMessage() {
-        return message;
-    }
-    public String getMessageType() {
-        return messageType;
-    }
     @Override
     public int getMaxSizeOfEntry() {
 
@@ -32,12 +20,7 @@ public class TextEntry extends AbstractEntry implements Print {
     }
 
     public void doPrint() {
-        author = getAuthor();
-        date = getDate();
-        message = getMessage();
-        messageType = getMessageType();
-
-        System.out.print("Author: " + author + ", " + "Date: " + date + ", " + "Message: " + message + ", " + "MessageType: " + messageType + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
+        System.out.print("Author: " + getAuthor() + ", " + "Date: " + getDate() + ", " + "Message: " + getMessage() + ", " + "MessageType: " + getMessageType() + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
         System.out.println();
     }
 

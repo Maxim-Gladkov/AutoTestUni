@@ -2,10 +2,10 @@ package org.testuni.classes;
 
 public abstract class AbstractEntry {
 
-    protected String author;
-    protected int date;
-    protected String message;
-    protected String messageType;
+    private String author;
+    private int date;
+    private String message;
+    private String messageType;
 
     public AbstractEntry(String author, int date, String message, String messageType) {
         this.author = author;
@@ -19,6 +19,19 @@ public abstract class AbstractEntry {
         System.out.print(date + ", ");
         System.out.print(message + ", ");
         System.out.println(messageType);
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+    public int getDate() {
+        return date;
+    }
+    public String getMessage() {
+        return message;
+    }
+    public String getMessageType() {
+        return messageType;
     }
 
     public abstract int getMaxSizeOfEntry ();
