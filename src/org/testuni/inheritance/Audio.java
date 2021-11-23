@@ -1,8 +1,8 @@
 package org.testuni.inheritance;
 
-import org.testuni.interfaces.Play;
+import org.testuni.interfaces.Playable;
 
-public class Audio extends Media implements Play {
+public class Audio extends Media implements Playable {
 
     private double audioLength;
     private final String mediaType = "audio";
@@ -19,18 +19,17 @@ public class Audio extends Media implements Play {
     }
 
     @Override
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    @Override
     public int getMaxSizeOfEntry() {
         return maxSizeOfAudio;
     }
 
     public void doPlay() {
-        author = getAuthor();
-        date = getDate();
-        message = getMessage();
-        messageType = getMessageType();
-        audioLength = getAudioLength();
-
-        System.out.print("Author: " + author + ", " + "Date: " + date + ", " + "Message: " + message + ", " + "MessageType: " + messageType + ", " + "MediaType: " + mediaType + ", " + "AudioLength: " + audioLength + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
+        System.out.print("Author: " + getAuthor() + ", " + "Date: " + getDate() + ", " + "Message: " + getMessage() + ", " + "MessageType: " + getMessageType() + ", " + "MediaType: " + getMediaType() + ", " + "AudioLength: " + getAudioLength() + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
         System.out.println();
     }
 

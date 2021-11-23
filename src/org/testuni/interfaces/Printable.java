@@ -1,5 +1,5 @@
 package org.testuni.interfaces;
 
-public interface Print {
+public interface Printable {
     void doPrint ();
 }

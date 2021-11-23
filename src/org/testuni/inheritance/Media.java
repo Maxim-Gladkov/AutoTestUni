@@ -3,10 +3,10 @@ package org.testuni.inheritance;
 import org.testuni.classes.AbstractEntry;
 
 
-public class Media extends AbstractEntry {
+public abstract class Media extends AbstractEntry {
 
-        protected int maxEntrySize;
-        protected String mediaType;
+        private int maxEntrySize;
+        private String mediaType;
 
         public Media(String author, int date, String message, String messageType, String mediaType, int maxEntrySize) {
             super(author, date, message, messageType);
@@ -14,22 +14,7 @@ public class Media extends AbstractEntry {
             this.maxEntrySize = maxEntrySize;
         }
 
-        public String getAuthor() {
-                return author;
-        }
-        public int getDate() {
-                return date;
-        }
-        public String getMessage() {
-                return message;
-        }
-        public String getMessageType() {
-                return messageType;
-        }
-        public String getMediaType() {
-                return mediaType;
-        }
-
+        public abstract String getMediaType();
 
         @Override
         public int getMaxSizeOfEntry() {

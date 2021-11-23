@@ -1,5 +1,5 @@
 package org.testuni.interfaces;
 
-public interface Play {
+public interface Playable {
     void doPlay();
 }

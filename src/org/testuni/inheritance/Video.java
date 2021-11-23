@@ -1,9 +1,9 @@
 package org.testuni.inheritance;
 
-import org.testuni.interfaces.Play;
+import org.testuni.interfaces.Playable;
 
 
-public class Video extends Media implements Play {
+public class Video extends Media implements Playable {
 
     private int amountOfViews;
     private final String mediaType = "video";
@@ -20,18 +20,17 @@ public class Video extends Media implements Play {
     }
 
     @Override
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    @Override
     public int getMaxSizeOfEntry() {
         return maxSizeOfVideo;
     }
 
     public void doPlay() {
-        author = getAuthor();
-        date = getDate();
-        message = getMessage();
-        messageType = getMessageType();
-        amountOfViews = getAmountOfViews();
-
-        System.out.print("Author: " + author + ", " + "Date: " + date + ", " + "Message: " + message + ", " + "MessageType: " + messageType + ", " + "MediaType: " + mediaType + ", " + "AmountOfViews: " + amountOfViews + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
+        System.out.print("Author: " + getAuthor() + ", " + "Date: " + getDate() + ", " + "Message: " + getMessage() + ", " + "MessageType: " + getMessageType() + ", " + "MediaType: " + getMediaType() + ", " + "AmountOfViews: " + getAmountOfViews() + ", " + "MaxSizeOfEntry: " + getMaxSizeOfEntry() + ".");
         System.out.println();
     }
 }
