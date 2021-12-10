@@ -1,28 +1,22 @@
 package org.testuni.dishwasher;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dishwasher {
 
     private int occupancy = 0;
-    private ArrayList<Items> loadedTableware = new ArrayList<>();
-    private String engineState;
+    private List<Tableware> loadedTableware = new ArrayList<>();
+    private Boolean engineWork;
     private int maxItems;
 
 
-    /**
-     * Конструктор для экземпляров класса Dishwasher
-     * @param maxItems - является константой
-     * Полю "engineState" по-умолчанию присваивается значение "stop"
-     * @throws NullPointerException если поле maxItems == 0
-     */
     public Dishwasher (int maxItems) {
-        this.maxItems = maxItems;
-        this.engineState = "stop";
-
         if (maxItems == 0) {
-            throw new NullPointerException("Max amount of items in dishwasher can not be null!");
+            throw new IllegalArgumentException("Max amount of items in dishwasher can not be null!");
         }
+        this.maxItems = maxItems;
+        this.engineWork = false;
     }
 
     /**
@@ -33,16 +27,18 @@ public class Dishwasher {
      * @throws MyExceptions.EngineStateExceptions если машина уже запущенна
      * @throws MyExceptions.TablwareStateException если посуда в машине чистая
      */
-    public void setTableware (Items item) {
+    public void setTableware (Tableware item) {
         this.loadedTableware.add(item);
         this.occupancy = loadedTableware.size();
         System.out.println("Amount of items in dishwasher: " + occupancy);
 
         if (occupancy == maxItems) {
             throw new MyExceptions.OccupancyException("Dishwasher has been already packed!");
-        }else if (engineState != "stop") {
+        }
+        if (engineWork != false) {
             throw new MyExceptions.EngineStateExceptions("Dishwasher is working right now!");
-        }else if (item.getState() == "clean") {
+        }
+        if (item.getClean() == true) {
             throw new MyExceptions.TablwareStateException("The items in dishwasher are clean!");
         }
     }
@@ -52,7 +48,7 @@ public class Dishwasher {
      * Очищаем ArrayList "loadedTableware" и присваем его размер полю "occupancy"
      * Выводит сообщение в консоль
      */
-    protected void removeTableware() {
+    public void removeTableware() {
         this.loadedTableware.clear();
         this.occupancy = loadedTableware.size();
         System.out.println("Dishwasher is empty: " + occupancy);
@@ -65,17 +61,19 @@ public class Dishwasher {
      * @throws MyExceptions.EngineStateExceptions если машина уже запущенна
      * Выводим в консоль сообщение, что посудомоечная машина работает
      */
-    protected void launchDishwasher() {
+    public void launchDishwasher() {
         this.occupancy = loadedTableware.size();
 
         if (occupancy == 0) {
             throw new MyExceptions.OccupancyException("Dishwasher is empty!");
-        }else if (engineState == "start") {
-            throw new MyExceptions.EngineStateExceptions("Dishwasher is working right now!");
-        }else if (engineState == "stop") {
-            engineState = "start";
         }
-        System.out.println("The dishwasher state is: " + engineState);
+        if (engineWork == true) {
+            throw new MyExceptions.EngineStateExceptions("Dishwasher is working right now!");
+        }
+        if (engineWork == false) {
+            engineWork = true;
+        }
+        System.out.println("The dishwasher state is: " + engineWork);
     }
 
     /**
@@ -83,14 +81,15 @@ public class Dishwasher {
      * @throws MyExceptions.EngineStateExceptions если машина не запущенна
      * Выводит в консоль сообщение, что работа посудомоечной машины остановленна
      */
-    protected void stopDishwasher() {
+    public void stopDishwasher() {
 
-        if (engineState == "stop") {
+        if (engineWork == false) {
             throw new MyExceptions.EngineStateExceptions("The dishwasher is not working!");
-        }else if (engineState == "start") {
-            engineState = "stop";
         }
-        System.out.println("The dishwasher state is: " + engineState);
+        if (engineWork == true) {
+            engineWork = false;
+        }
+        System.out.println("The dishwasher state is: " + engineWork);
     }
 
 

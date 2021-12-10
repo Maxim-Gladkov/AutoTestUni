@@ -4,14 +4,15 @@ package org.testuni.dishwasher;
 public class Main {
     public static void main(String[] args) {
 
-         Items i1 = new Items("dirty", "knife");
-         Items i2 = new Items("dirty", "plate");
-         Items i3 = new Items("dirty", "cup");
-         Items i4 = new Items("clean", "spoon");
-         Items i5 = new Items("dirty", "fork");
+        Tableware i1 = new Tableware(false, "knife");
+        Tableware i2 = new Tableware(false, "plate");
+        Tableware i3 = new Tableware(false, "cup");
+        Tableware i4 = new Tableware(false, "spoon");
+        Tableware i5 = new Tableware(false, "fork");
 
 
         Dishwasher dishwasher = new Dishwasher(5);
+        dishwasher.removeTableware();
 
         dishwasher.setTableware(i1);
         dishwasher.setTableware(i2);
